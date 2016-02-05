@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get update && apt-get install build-essential git libreadline-dev libncurses5-dev libssl-dev iptables -y
+apt-get update && apt-get install build-essential git libreadline-dev libncurses5-dev libssl-dev iptables openvpn -y
 
 git clone --depth 1 https://github.com/SoftEtherVPN/SoftEtherVPN.git /usr/local/src/vpnserver
 
