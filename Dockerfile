@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM ubuntu:14.04
 
 MAINTAINER Tomohisa Kusano <siomiz@gmail.com>
 

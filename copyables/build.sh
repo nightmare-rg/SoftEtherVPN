@@ -1,11 +1,6 @@
 #!/bin/bash
 
-echo "clean_requirements_on_remove=1" >> /etc/yum.conf
-
-yum -y update \
-  && yum -y install unzip \
-  && yum -y groupinstall "Development Tools" \
-  && yum -y install readline-devel ncurses-devel openssl-devel iptables
+apt-get update && apt-get install build-essential git libreadline-dev libncurses5-dev libssl-dev iptables -y
 
 git clone --depth 1 https://github.com/SoftEtherVPN/SoftEtherVPN.git /usr/local/src/vpnserver
 
@@ -24,10 +19,9 @@ gcc -o /usr/local/sbin/run /usr/local/src/run.c
 
 rm /usr/local/src/run.c
 
-yum -y remove readline-devel ncurses-devel openssl-devel \
-  && yum -y groupremove "Development Tools" \
-  && yum clean all
-  
-rm -rf /var/log/* /var/cache/yum/* /var/lib/yum/*
+#cleanup
+apt-get remove -y build-essential && apt-get -y autoremove
+apt-get clean
+rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 exit 0
