@@ -164,6 +164,12 @@ echo \# [userpass.txt OK]
 echo \# [user: $HIDE_USER]
 echo \# [pass: $HIDE_PASS]
 
-/etc/init.d/openvpn restart
+/etc/init.d/openvpn restart && sleep 10
+
+export eth0_ip=`ifconfig | grep -C 1 eth0 | grep "inet addr:" | grep -Eo "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | head -1`
+echo "1 rt2" >> /etc/iproute2/rt_tables
+ip route add default via 172.17.0.1 dev eth0 table rt2
+ip rule add from $eth0_ip table rt2 priority 500
+ip rule add to $eth0_ip table rt2 priority 500
 
 exec "$@"
