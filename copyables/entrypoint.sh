@@ -171,5 +171,6 @@ echo "1 rt2" >> /etc/iproute2/rt_tables
 ip route add default via 172.17.0.1 dev eth0 table rt2
 ip rule add from $eth0_ip table rt2 priority 500
 ip rule add to $eth0_ip table rt2 priority 500
+echo \# [setting ip routing OK]
 
 exec "$@"
