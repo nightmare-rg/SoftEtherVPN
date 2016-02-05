@@ -1,3 +1,10 @@
+
+Dockerfile for https://hub.docker.com/r/jstewig/softethervpn-hideio/
+
+See specific instructions for hide.io on dockerhub.
+
+---------------------------------------------------
+
 # A simple single-user [SoftEther VPN][1] server Docker image
 
 **Note:** OpenVPN support is enabled on :latest image. STDOUT (`docker log`) format has changed as a result.
